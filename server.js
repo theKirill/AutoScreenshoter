@@ -5,7 +5,7 @@ const port = process.env.PORT || 3000;
 
 // здесь у нас происходит импорт пакетов и определяется порт нашего сервера
 const app = express();
-app.use(favicon(__dirname + '/build/favicon.png'));
+app.use(favicon(__dirname + '/build/favicon.ico'));
 
 //здесь наше приложение отдаёт статику
 app.use(express.static(__dirname));
