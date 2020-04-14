@@ -36,7 +36,7 @@ export class TimerView extends Component {
 
     saveScreenshot = async (uri) => {
         const dbx = new Dropbox({// подключаемся к dropbox
-            accessToken: 'ouNlkVrP1aAAAAAAAAAAFu1kXhjFjRHkFSnZwZjjDNJzyAHQ5WKh2M6cMwdJ6hRx',
+            accessToken: 'ouNlkVrP1aAAAAAAAAAAGjh-YXQNF4DVbJn8sxYtm0u7Ujjt_xjtOjiKLbdemCsL',
             fetch
         });
 
@@ -60,9 +60,6 @@ export class TimerView extends Component {
     render() {
         return (
             <div>
-                <pre>Интервал (мин): <input type={'number'}
-                onChange={(event => {console.log(this.intervalMin); this.intervalMin = event.target.value})}/>
-                </pre>
                 <h1>До чих-пых осталось:</h1>
                 <CountdownTimer endDate={moment(`${this.state.nextScreenData} ${this.state.nextScreenTime}`, 'DD/MM/YYYY hh:mm:ss')}/>
                 <h2>Сохранено скриншотов: {this.state.screenshotsCount}</h2>
