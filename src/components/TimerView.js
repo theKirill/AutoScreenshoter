@@ -60,6 +60,10 @@ export class TimerView extends Component {
     render() {
         return (
             <div>
+                <pre>Интервал (мин): <input type={'number'}
+                onChange={(event => {this.intervalMin = event.target.value})}/>
+                <input type={'button'} value={'OK'}/>
+                </pre>
                 <h1>До чих-пых осталось:</h1>
                 <CountdownTimer endDate={moment(`${this.state.nextScreenData} ${this.state.nextScreenTime}`, 'DD/MM/YYYY hh:mm:ss')}/>
                 <h2>Сохранено скриншотов: {this.state.screenshotsCount}</h2>
