@@ -1,0 +1,44 @@
+{
+  "name": "myapp",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.5.0",
+    "@testing-library/user-event": "^7.2.1",
+    "dropbox": "^4.0.30",
+    "html2canvas": "^1.0.0-rc.5",
+    "moment": "^2.24.0",
+    "react": "^16.13.1",
+    "react-awesome-countdowntimer": "^1.1.1",
+    "react-dom": "^16.13.1",
+    "react-native-view-shot": "^3.1.2",
+    "react-scripts": "3.4.1"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "express": "^4.17.1",
+    "express-favicon": "^2.0.1",
+    "path": "^0.12.7"
+  }
+}
