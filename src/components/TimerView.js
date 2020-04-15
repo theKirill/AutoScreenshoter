@@ -23,7 +23,7 @@ export class TimerView extends Component {
         this.doTask();
 
         this.changeState(this.state.intervalMin)
-    }, this.state.intervalMin * 59000);
+    }, 1 * 59000);
 
     doTask = () => {
         html2canvas(document.body).then(canvas => {
