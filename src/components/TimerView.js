@@ -12,7 +12,7 @@ export class TimerView extends Component {
         let d = new Date();
         this.state = {// здесь будем хранить инфу о времени следующего скрина
             nextScreenData: `${d.getDate()}/${(d.getMonth() + 1)}/${d.getFullYear()}`,
-            nextScreenTime: `${d.getHours()}:${(d.getMinutes() + this.intervalMin)}:${d.getSeconds()}`,
+            nextScreenTime: `${d.getHours()}:${(d.getMinutes() + 1)}:${d.getSeconds()}`,
             screenshotsCount: 0,// кол-во сделанных скриншотов
             intervalMin: 1,//интервал (в мин)
         };
