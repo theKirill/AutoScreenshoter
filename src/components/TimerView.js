@@ -58,7 +58,7 @@ export class TimerView extends Component {
         });
     }
 
-    changeInterval = () => {
+    changeInterval = () => {// изменение интервала
         clearInterval(this.timer);
 
         let newInterval = document.getElementById('interval').value
@@ -71,7 +71,7 @@ export class TimerView extends Component {
 
                 this.changeState(this.state.intervalMin)
             }, this.state.intervalMin * 59000)
-        })
+        }, 100)
     }
 
     changeState = (i) => {
