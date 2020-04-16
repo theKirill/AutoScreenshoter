@@ -62,6 +62,7 @@ export class TimerView extends Component {
         clearInterval(this.timer);
 
         let newInterval = document.getElementById('interval').value
+        console.log(newInterval)
         this.changeState(newInterval)
 
         setTimeout(() => {
