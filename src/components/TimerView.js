@@ -51,7 +51,7 @@ export class TimerView extends Component {
 
     saveToDbx = async (file_png) => {
         const dbx = new Dropbox({// подключаемся к dropbox
-            accessToken: 'ouNlkVrP1aAAAAAAAAAAGjh-YXQNF4DVbJn8sxYtm0u7Ujjt_xjtOjiKLbdemCsL',
+            accessToken: '',
             fetch
         });
 
@@ -142,8 +142,8 @@ export class TimerView extends Component {
                 <h2>Сохранено скриншотов: {this.state.screenshotsCount}</h2>
 
                 <p>
-                    <h3>Ниже можете побаловаться и порисовать</h3>
-                    <button onClick={this.clearCanvas}/>
+                    <h3>Ниже можете побаловаться и порисовать:</h3>
+                    <button value={'Очистить'} onClick={this.clearCanvas}/>
                 </p>
                 <canvas id={'paint'} width={'1000px'} height={'500px'} />
             </div>
