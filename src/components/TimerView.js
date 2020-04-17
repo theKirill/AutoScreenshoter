@@ -135,7 +135,7 @@ export class TimerView extends Component {
                     endDate={moment(`${this.state.nextScreenData} ${this.state.nextScreenTime}`, 'DD/MM/YYYY hh:mm:ss')}/>
                 <h2>Сохранено скриншотов: {this.state.screenshotsCount}</h2>
 
-                <canvas id={'paint'} width={'100vh'} height={'50vh'}/>
+                <canvas id={'paint'} width={'500px'} height={'500px'}/>
             </div>
         );
     }
