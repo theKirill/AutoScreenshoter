@@ -71,21 +71,28 @@ export class TimerView extends Component {
         }, newInterval * 59000)
     }
 
-    changeState = (min) => {
+    changeState = (minutes) => {
         let d = new Date();
+        d.setMinutes(d.getMinutes() + Number.parseInt(minutes))
+
         this.setState({// меняем время для след скрина
             nextScreenData: `${d.getDate()}/${(d.getMonth() + 1)}/${d.getFullYear()}`,
-            nextScreenTime: `${d.getHours()}:${(d.getMinutes() + Number.parseInt(min))}:${d.getSeconds()}`,
+            nextScreenTime: `${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`,
             screenshotsCount: this.state.screenshotsCount + 1,
-            intervalMin: min,
+            intervalMin: minutes,
         });
     }
 
     render() {
         return (
             <div>
-                <pre>Интервал (мин): <input id={'interval'} type={'number'} defaultValue={1}/>
-                    <input type={'button'} value={'OK'} onClick={this.changeInterval}/>
+                <pre>Интервал (мин): <input id={'interval'}
+                                            type={'number'}
+                                            defaultValue={1}/>
+                    <input
+                        type={'button'}
+                        value={'OK'}
+                        onClick={this.changeInterval}/>
                 </pre>
                 <h1>До чих-пых осталось:</h1>
                 <CountdownTimer
