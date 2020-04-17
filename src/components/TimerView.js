@@ -9,6 +9,8 @@ export class TimerView extends Component {
     constructor() {
         super();
 
+        this.init()
+
         let d = new Date();
         this.state = {// здесь будем хранить инфу о времени следующего скрина
             nextScreenData: `${d.getDate()}/${(d.getMonth() + 1)}/${d.getFullYear()}`,
@@ -25,7 +27,7 @@ export class TimerView extends Component {
         this.changeState(this.state.intervalMin)
     }, 59000);
 
-    doTask = () => {
+    doTask = () => {// собственно создание скриншота
         html2canvas(document.body).then(canvas => {
             this.saveScreenshot(canvas.toDataURL('png'))
         });
@@ -81,6 +83,42 @@ export class TimerView extends Component {
             screenshotsCount: this.state.screenshotsCount + 1,
             intervalMin: minutes,
         });
+    }
+
+    init = () => {
+        let canvas = document.getElementById('paint');
+
+        let context = canvas.getContext('2d');
+        context.strokeStyle = '#000000';
+        context.lineJoin = 'round';
+        context.lineWidth = 4;
+
+        var tool = this;
+        tool.started = false;
+
+        tool.mousedown = function (event) {
+            context.beginPath();
+            context.moveTo(event._x, event._y);
+            tool.started = true;
+        }
+
+        tool.mousemove = function (event) {
+
+            if(tool.started) {
+                context.lineTo(event._x, event._y);
+                context.stroke();
+            }
+        }
+        tool.mouseup = function (event) {
+            if(tool.started) {
+                //this.mousemove(event);
+                tool.started = false;
+            }
+        }
+
+        canvas.addEventListener('mousedown',null,tool.mousedown);
+        canvas.addEventListener('mousemove',null,tool.mousemove);
+        canvas.addEventListener('mouseup',null, tool.mouseup);
     }
 
     render() {
