@@ -86,39 +86,39 @@ export class TimerView extends Component {
     }
 
     init = () => {
-        let canvas = document.getElementById('paint');
+        let canvas = document.getElementById("paint");
+        let context = canvas.getContext("2d");
 
-        let context = canvas.getContext('2d');
-        context.strokeStyle = '#000000';
-        context.lineJoin = 'round';
-        context.lineWidth = 4;
+        var mouse = {x: 0, y: 0};
+        var draw = false;
 
-        var tool = this;
-        tool.started = false;
+        canvas.addEventListener("mousedown", function (e) {
 
-        tool.mousedown = function (event) {
+            mouse.x = e.pageX - this.offsetLeft;
+            mouse.y = e.pageY - this.offsetTop;
+            draw = true;
             context.beginPath();
-            context.moveTo(event._x, event._y);
-            tool.started = true;
-        }
+            context.moveTo(mouse.x, mouse.y);
+        });
+        canvas.addEventListener("mousemove", function (e) {
 
-        tool.mousemove = function (event) {
+            if (draw) {
 
-            if(tool.started) {
-                context.lineTo(event._x, event._y);
+                mouse.x = e.pageX - this.offsetLeft;
+                mouse.y = e.pageY - this.offsetTop;
+                context.lineTo(mouse.x, mouse.y);
                 context.stroke();
             }
-        }
-        tool.mouseup = function (event) {
-            if(tool.started) {
-                //this.mousemove(event);
-                tool.started = false;
-            }
-        }
+        });
+        canvas.addEventListener("mouseup", function (e) {
 
-        canvas.addEventListener('mousedown',null,tool.mousedown);
-        canvas.addEventListener('mousemove',null,tool.mousemove);
-        canvas.addEventListener('mouseup',null, tool.mouseup);
+            mouse.x = e.pageX - this.offsetLeft;
+            mouse.y = e.pageY - this.offsetTop;
+            context.lineTo(mouse.x, mouse.y);
+            context.stroke();
+            context.closePath();
+            draw = false;
+        });
     }
 
     render() {
@@ -137,7 +137,7 @@ export class TimerView extends Component {
                     endDate={moment(`${this.state.nextScreenData} ${this.state.nextScreenTime}`, 'DD/MM/YYYY hh:mm:ss')}/>
                 <h2>Сохранено скриншотов: {this.state.screenshotsCount}</h2>
 
-                <canvas id = "paint" width = "500" height = "400"/>
+                <canvas id={'paaint'} width={'100%'} height={'100%'}/>
             </div>
         );
     }
