@@ -64,6 +64,7 @@ export class TimerView extends Component {
 
         let newInterval = document.getElementById('interval').value
         this.changeState(newInterval)
+        console.log(this.state)
 
         this.timer = setInterval(() => {
             this.doTask();
@@ -72,15 +73,14 @@ export class TimerView extends Component {
         }, this.state.intervalMin * 59000)
     }
 
-    changeState = (i) => {
+    changeState = (min) => {
         let d = new Date();
         this.setState({// меняем время для след скрина
             nextScreenData: `${d.getDate()}/${(d.getMonth() + 1)}/${d.getFullYear()}`,
-            nextScreenTime: `${d.getHours()}:${(d.getMinutes() + Number.parseInt(i))}:${d.getSeconds()}`,
+            nextScreenTime: `${d.getHours()}:${(d.getMinutes() + Number.parseInt(min))}:${d.getSeconds()}`,
             screenshotsCount: this.state.screenshotsCount + 1,
-            intervalMin: i,
+            intervalMin: min,
         });
-        console.log(this.state);
     }
 
     render() {
