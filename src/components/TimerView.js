@@ -51,7 +51,7 @@ export class TimerView extends Component {
 
     saveToDbx = async (file_png) => {
         const dbx = new Dropbox({// подключаемся к dropbox
-            accessToken: 'ouNlkVrP1aAAAAAAAAAAGjh-YXQNF4DVbJn8sxYtm0u7Ujjt_xjtOjiKLbdemCsL',
+            accessToken: '',
             fetch
         });
 
