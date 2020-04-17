@@ -86,7 +86,7 @@ export class TimerView extends Component {
     render() {
         return (
             <div>
-                <pre>Интервал (мин): <input id={'interval'} type={'number'} value={this.state.intervalMin}/>
+                <pre>Интервал (мин): <input id={'interval'} type={'number'} defaultValue={1}/>
                     <input type={'button'} value={'OK'} onClick={this.changeInterval}/>
                 </pre>
                 <h1>До чих-пых осталось:</h1>
