@@ -19,7 +19,7 @@ export class TimerView extends Component {
     }
 
     componentDidMount() {
-        this.init()
+        this.initPaint()
     }
 
     // повторить с интервалом intervalMin минут
@@ -87,26 +87,22 @@ export class TimerView extends Component {
         });
     }
 
-    init = () => {
-        let canvas = document.getElementById("paint");
-        console.log(canvas)
-        let context = canvas.getContext("2d");
+    initPaint = () => {// для рисования на форме
+        let canvas = document.getElementById("paint")
+        let context = canvas.getContext("2d")
 
         var mouse = {x: 0, y: 0};
         var draw = false;
 
         canvas.addEventListener("mousedown", function (e) {
-
             mouse.x = e.pageX - this.offsetLeft;
             mouse.y = e.pageY - this.offsetTop;
             draw = true;
             context.beginPath();
-            context.moveTo(mouse.x, mouse.y);
+            context.moveTo(mouse.x, mouse.y)
         });
         canvas.addEventListener("mousemove", function (e) {
-
             if (draw) {
-
                 mouse.x = e.pageX - this.offsetLeft;
                 mouse.y = e.pageY - this.offsetTop;
                 context.lineTo(mouse.x, mouse.y);
@@ -114,7 +110,6 @@ export class TimerView extends Component {
             }
         });
         canvas.addEventListener("mouseup", function (e) {
-
             mouse.x = e.pageX - this.offsetLeft;
             mouse.y = e.pageY - this.offsetTop;
             context.lineTo(mouse.x, mouse.y);
@@ -140,7 +135,7 @@ export class TimerView extends Component {
                     endDate={moment(`${this.state.nextScreenData} ${this.state.nextScreenTime}`, 'DD/MM/YYYY hh:mm:ss')}/>
                 <h2>Сохранено скриншотов: {this.state.screenshotsCount}</h2>
 
-                <canvas id={'paint'} width={'100%'} height={'100%'}/>
+                <canvas id={'paint'} width={'100vh'} height={'50vh'}/>
             </div>
         );
     }
