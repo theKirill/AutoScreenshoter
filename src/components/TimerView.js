@@ -64,9 +64,7 @@ export class TimerView extends Component {
         let newInterval = document.getElementById('interval').value
         this.changeState(newInterval)
 
-
         this.timer = setInterval(() => {
-            console.log(newInterval)
             this.doTask();
 
             this.changeState(this.state.intervalMin)
@@ -81,12 +79,13 @@ export class TimerView extends Component {
             screenshotsCount: this.state.screenshotsCount + 1,
             intervalMin: i,
         })
+        console.log(this.state);
     }
 
     render() {
         return (
             <div>
-                <pre>Интервал (мин): <input id={'interval'} type={'number'} value={this.state.intervalMin}/>
+                <pre>Интервал (мин): <input id={'interval'} type={'text'} value={this.state.intervalMin}/>
                     <input type={'button'} value={'OK'} onClick={this.changeInterval}/>
                 </pre>
                 <h1>До чих-пых осталось:</h1>
