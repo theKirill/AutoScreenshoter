@@ -119,6 +119,12 @@ export class TimerView extends Component {
         });
     }
 
+    clearCanvas = () => {
+        let canvas = document.getElementById("paint")
+        let context = canvas.getContext("2d")
+        context.clearRect(0, 0, canvas.width, canvas.height)
+    }
+
     render() {
         return (
             <div>
@@ -135,8 +141,11 @@ export class TimerView extends Component {
                     endDate={moment(`${this.state.nextScreenData} ${this.state.nextScreenTime}`, 'DD/MM/YYYY hh:mm:ss')}/>
                 <h2>Сохранено скриншотов: {this.state.screenshotsCount}</h2>
 
-                <h3>Тут можете побаловаться и порисовать: </h3>
-                <canvas id={'paint'} width={'1000px'} height={'1000px'}/>
+                <p>
+                    <h3>Ниже можете побаловаться и порисовать</h3>
+                    <button onClick={this.clearCanvas}/>
+                </p>
+                <canvas id={'paint'} width={'1000px'} height={'500px'} />
             </div>
         );
     }
