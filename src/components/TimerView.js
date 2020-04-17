@@ -16,7 +16,6 @@ export class TimerView extends Component {
             screenshotsCount: 0,// кол-во сделанных скриншотов
             intervalMin: 1,//интервал (в мин)
         };
-        console.log(this.state);
     }
 
     // повторить с интервалом intervalMin минут
@@ -64,13 +63,12 @@ export class TimerView extends Component {
 
         let newInterval = document.getElementById('interval').value
         this.changeState(newInterval)
-        console.log(this.state)
 
         this.timer = setInterval(() => {
             this.doTask();
 
             this.changeState(this.state.intervalMin)
-        }, this.state.intervalMin * 59000)
+        }, newInterval * 59000)
     }
 
     changeState = (min) => {
