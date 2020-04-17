@@ -62,16 +62,15 @@ export class TimerView extends Component {
         clearInterval(this.timer);
 
         let newInterval = document.getElementById('interval').value
-        console.log(newInterval)
         this.changeState(newInterval)
 
-        setTimeout(() => {
-            this.timer = setInterval( () => {
-                this.doTask();
 
-                this.changeState(this.state.intervalMin)
-            }, this.state.intervalMin * 59000)
-        }, 100)
+        this.timer = setInterval(() => {
+            console.log(newInterval)
+            this.doTask();
+
+            this.changeState(this.state.intervalMin)
+        }, this.state.intervalMin * 59000)
     }
 
     changeState = (i) => {
@@ -87,7 +86,7 @@ export class TimerView extends Component {
     render() {
         return (
             <div>
-                <pre>Интервал (мин): <input id={'interval'} type={'number'}/>
+                <pre>Интервал (мин): <input id={'interval'} type={'number'} value={this.state.intervalMin}/>
                     <input type={'button'} value={'OK'} onClick={this.changeInterval}/>
                 </pre>
                 <h1>До чих-пых осталось:</h1>
