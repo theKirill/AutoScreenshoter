@@ -98,6 +98,8 @@ export class TimerView extends Component {
                 <CountdownTimer
                     endDate={moment(`${this.state.nextScreenData} ${this.state.nextScreenTime}`, 'DD/MM/YYYY hh:mm:ss')}/>
                 <h2>Сохранено скриншотов: {this.state.screenshotsCount}</h2>
+
+                <canvas id = "paint" width = "500" height = "400"/>
             </div>
         );
     }
