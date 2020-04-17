@@ -87,6 +87,7 @@ export class TimerView extends Component {
 
     init = () => {
         let canvas = document.getElementById("paint");
+        console.log(canvas)
         let context = canvas.getContext("2d");
 
         var mouse = {x: 0, y: 0};
